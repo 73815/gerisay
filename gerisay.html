@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8 Mart 2024 ve Google Dino Oyunu</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f4f4f4;
+            color: #333;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+
+        #countdown {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff4500;
+            margin-bottom: 20px;
+        }
+
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>8 Mart 2024</h1>
+    <div id="countdown"></div>
+    
+    <iframe src="https://chromedino.com/" frameborder="0"></iframe>
+
+    <script>
+        var targetDate = new Date('March 8, 2024 00:00:00').getTime();
+
+        var countdownInterval = setInterval(function() {
+            var currentDate = new Date().getTime();
+            var timeLeft = targetDate - currentDate;
+
+            var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = days + ' gün ' + hours + ' saat ' + minutes + ' dakika ' + seconds + ' saniye ';
+
+            if (timeLeft < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = 'Süre doldu!';
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
